@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Hortas - Horta Urbana</title>
+    <!-- CSS do Leaflet para o mapa funcionar -->
+    <link rel="stylesheet" href="https://unpkg.com" />
+    <link rel="stylesheet" href="mapahortas.css">
+</head>
+<body>
+
+    <main class="container-mapa">
+        <header class="header-simples">
+            <h1>Mapa de Hortas</h1>
+        </header>
+
+        <!-- Onde o mapa real será renderizado -->
+        <div id="map"></div>
+
+        <section class="legenda">
+            <div class="legenda-item">
+                <span class="dot verde"></span>
+                <p>Hortas Comunitárias (Prefeitura)</p>
+            </div>
+            <div class="legenda-item">
+                <span class="dot roxo"></span>
+                <p>Iniciativas Independentes</p>
+            </div>
+            <div class="legenda-item">
+                <span class="dot laranja"></span>
+                <p>Hortas em Centros de Educação</p>
+            </div>
+        </section>
+    </main>
+
+   <footer class="tab-bar">
+        <a href="painelcontrole.html" class="tab-item"><span>🏠</span><p>PAINEL</p></a>
+        <a href="novoplantio.html" class="tab-item active"><span>🌿</span><p>NOVO PLANTIO</p></a>
+        <a href="mapahortas.html" class="tab-item"><span>📍</span><p>MAPA</p></a>
+        <a href="login.html" class="tab-item"><span>🔑</span><p>LOGIN</p></a>
+    </footer>
+
+    <!-- Script do Leaflet -->
+    <script src="https://unpkg.com"></script>
+    <script>
+        // Inicializa o mapa focado em Curitiba
+        const map = L.map('map').setView([-25.429, -49.267], 12);
+
+        // Carrega as imagens do mapa (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Exemplo de como adicionar um marcador (Horta do Centro)
+        L.marker([-25.430, -49.270]).addTo(map)
+            .bindPopup('Horta Comunitária Centro')
+            .openPopup();
+    </script>
+</body>
+</html>

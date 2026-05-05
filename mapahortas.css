@@ -1,0 +1,60 @@
+/* ... manter bases anteriores ... */
+
+.container-mapa {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+#map {
+    width: 90%;
+    height: 400px; /* Altura do mapa */
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.legenda {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.legenda-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.verde { background-color: #2d5a27; }
+.roxo { background-color: #6a1b9a; }
+.laranja { background-color: #ef6c00; }
+
+.legenda-item p {
+    font-size: 0.9rem;
+    color: #333;
+}
+/* Barra Inferior (Repetida para consistência) */
+.tab-bar {
+    background-color: #000;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.tab-item { text-align: center; color: white; opacity: 0.6; }
+.tab-item.active { opacity: 1; } /* Destaque para a aba atual */
+
+.tab-item span { font-size: 1.5rem; display: block; }
+.tab-item p { font-size: 0.7rem; margin-top: 5px; font-weight: bold; }

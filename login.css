@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    padding: 40px 0;
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: normal;
+}
+
+/* Área de Login */
+.login-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.login-box {
+    background-color: #d9d9d9;
+    width: 400px;
+    padding: 30px;
+    height: 450px;
+}
+
+.login-box h2 {
+    background-color: white;
+    padding: 10px;
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 50px;
+}
+
+.input-group {
+    margin-bottom: 40px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    background-color: white;
+    padding: 5px;
+}
+
+/* Barra Inferior */
+.bottom-nav {
+    background-color: black;
+    color: white;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-item .icon {
+    font-size: 24px;
+}
+
+.nav-item .label {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
+/* Botões Internos do Card */
+.btn-selecionar, .btn-data, .box-texto {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    text-align: left;
+    font-size: 1rem;
+    width: fit-content;
+    min-width: 120px;
+}
+
+/* Barra Inferior (Repetida para consistência) */
+.tab-bar {
+    background-color: #000;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.tab-item { text-align: center; color: white; opacity: 0.6; }
+.tab-item.active { opacity: 1; } /* Destaque para a aba atual */
+
+.tab-item span { font-size: 1.5rem; display: block; }
+.tab-item p { font-size: 0.7rem; margin-top: 5px; font-weight: bold; }
+
+
+/* Estilização do Botão Enviar */
+.btn-enviar {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #333; /* Cinza escuro para contraste */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: #000;
+}
+
+
+
+
+/* Estilização para Input e Select */
+.input-group input, 
+.input-group select {
+    width: 100%;
+    height: 40px;
+    border: none;
+    background-color: white;
+    padding: 0 10px;
+    font-size: 14px;
+    appearance: none; /* Remove seta padrão em alguns navegadores */
+    -webkit-appearance: none;
+}
+
+/* Adiciona uma seta personalizada para o select */
+.input-group select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}
+
+

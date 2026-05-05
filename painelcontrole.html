@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HortaUrbana - Painel de Controle</title>
+    <link rel="stylesheet" href="painelcontrole.css">
+
+</head>
+
+
+<body>
+
+    </main>
+
+    <main class="painel-container">
+        <h2>Bem-vindo ao Painel de Controle</h2>
+        <p>Aqui você pode gerenciar suas hortas, visualizar estatísticas e acessar recursos exclusivos.</p>
+
+        <!-- Seção de Estatísticas -->
+        <section class="estatisticas">
+            <h3>Estatísticas Recentes</h3>
+            <ul>
+                <li>Total de Hortas: 25</li>
+                <li>Plantas Cadastradas: 150</li>
+                <li>Usuários Ativos: 2</li>
+            </ul>
+        </section>
+        <article class="inventory-section">
+            <h3>Canteiros Ativos</h3>
+            <div id="lista-canteiros" class="grid-container">
+                <!-- Exemplo de como um card aparecerá na tela -->
+                <div class="canteiro-card urgent">
+                    <h4>Canteiro 04: Tomate</h4>
+                    <p>Plantado em: 10/03/2024</p>
+                    <p class="alert-text"><strong>Status:</strong> Precisa de Rega Urgente</p>
+                    <button class="action-button">Registrar Rega</button>
+                </div>
+
+                <select id="cultura">
+                    <option value="Alface">Alface</option>
+                    <option value="Tomate">Tomate</option>
+                    <option value="Cenoura">Cenoura</option>
+                </select>
+
+
+                <p class="empty-msg">Fim da lista de canteiros.</p>
+
+                <section class="gerenciamento">
+    <h3>Gerenciamento de Hortas</h3>
+    <!-- Redireciona para a página de cadastro que você já tem -->
+    <button type="button" class="gerenciar-button" onclick="window.location.href='novoplantio.html'">
+        Adicionar Nova Horta
+    </button>
+    
+    <!-- Este botão pode apenas dar um aviso ou recarregar a lista -->
+    <button type="button" class="gerenciar-button" onclick="carregarPainel()">
+        Atualizar Lista
+    </button>
+    
+    <!-- Este botão vai apagar TODOS os plantios da memória -->
+    <button type="button" class="gerenciar-button" onclick="excluirTudo()" style="background-color: #c62828;">
+        Excluir Todas as Hortas
+    </button>
+</section>
+
+    </main>
+
+    <footer class="tab-bar">
+        <a href="painelcontrole.html" class="tab-item"><span>🏠</span><p>PAINEL</p></a>
+        <a href="novoplantio.html" class="tab-item active"><span>🌿</span><p>NOVO PLANTIO</p></a>
+        <a href="mapahortas.html" class="tab-item"><span>📍</span><p>MAPA</p></a>
+        <a href="login.html" class="tab-item"><span>🔑</span><p>LOGIN</p></a>
+    </footer>
+
+    <script>
+    function carregarPainel() {
+        let container = document.getElementById('lista-canteiros');
+        let dados = JSON.parse(localStorage.getItem('minhasHortas')) || [];
+
+        // --- ATUALIZA ESTATÍSTICAS---
+        let listaStats = document.querySelectorAll('.estatisticas li');
+        if (listaStats.length >= 2) {
+            listaStats[0].innerText = "Total de Hortas: " + (dados.length > 0 ? "1" : "0");
+            listaStats[1].innerText = "Plantas Cadastradas: " + dados.length;
+        }
+
+        // --- GERA OS CARDS NA TELA ---
+        if (dados.length === 0) {
+            container.innerHTML = '<p class="empty-msg">Nenhum plantio ativo no momento.</p>';
+            return;
+        }
+
+        container.innerHTML = ''; // Limpa antes de carregar
+
+        dados.forEach((item, index) => {
+            let card = document.createElement('div');
+            
+            // Lógica fica vermelho (classe urgent)
+            card.className = (item.cultura === "Tomate") ? 'canteiro-card urgent' : 'canteiro-card';
+
+            card.innerHTML = `
+                <h4>Canteiro: ${item.cultura}</h4>
+                <p><strong>Data:</strong> ${item.data}</p>
+                <p class="alert-text"><strong>Status:</strong> Ativo / Em crescimento</p>
+                <button class="action-button" onclick="removerIndividual(${index})">Remover</button>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // Função para o botão "Excluir Horta" do gerenciamento
+    function excluirTudo() {
+        if (confirm("Deseja realmente apagar TODOS os registros?")) {
+            localStorage.removeItem('minhasHortas');
+            carregarPainel();
+        }
+    }
+
+    // Função para o botão remover de cada card
+    function removerIndividual(index) {
+        let dados = JSON.parse(localStorage.getItem('minhasHortas'));
+        dados.splice(index, 1);
+        localStorage.setItem('minhasHortas', JSON.stringify(dados));
+        carregarPainel();
+    }
+
+    // Faz a página carregar os dados assim que abre
+    window.onload = carregarPainel;
+</script>
+
+
+</body>
