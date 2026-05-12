@@ -1,4 +1,6 @@
-        function salvarPlantio() {
+      
+      
+      function salvarPlantio() {
             const planta = {
                 cultura: document.getElementById('cultura').value,
                 data: document.getElementById('data-plantio').value,
@@ -6,7 +8,10 @@
                 status: "Em crescimento"
             };
 
-            console.log(planta);
+
+          
+
+console.log(planta);
 
             if (!planta.data) {
                 alert("Por favor, selecione uma data!");
@@ -26,6 +31,5 @@
             window.location.href = "painelcontrole.html"; // Vai para o painel
         }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
 
   

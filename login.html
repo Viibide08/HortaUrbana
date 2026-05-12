@@ -24,8 +24,9 @@
             <label>Escolha sua função:</label>
             <select id="funcao" required>
                 <option value="" disabled selected>Selecione...</option>
-                <option value="administrador">Administrador</option>
+                <option value="administrador">Administrador</option>  
                 <option value="cuidador">Cuidador</option>
+                <!-- opcoes do formulario de login -->
             </select>
         </div>
         <div class="input-group">
@@ -36,26 +37,35 @@
     </form>
 </main>
 
+
+<!-- //Java do login -->
 <script>
     document.getElementById('loginForm').addEventListener('submit', (e) => {
         e.preventDefault();
         const funcao = document.getElementById('funcao').value;
         // Salva a função para usar na próxima página
-        localStorage.setItem('usuarioFuncao', funcao);
-        window.location.href = 'novoplantio.html';
+
+        console.log(funcao);
+        if(funcao === "administrador"){
+            localStorage.setItem('usuarioFuncao', funcao);
+            window.location.href = 'painelcontrole.html'; 
+
+        }
+        if(funcao === "cuidador"){
+            localStorage.setItem('usuarioFuncao', funcao);
+            window.location.href = 'novoplantio.html'; 
+        // código que o irineu mandou usar
+
+        }
+        // localStorage.setItem('usuarioFuncao', funcao);
+        // window.location.href = 'novoplantio.html'; 
+        // código que o irineu mandou usar
     });
 </script>
 
   
 </body>
 </html>
-        </form>
-    </main>
-            </div>
-        </div>
-    </main>
+      
 
-  
-
-</body>
-</html>
+<!-- problema pra semana que vem: o formulario mesmo com o código que o irineu passou, ele nao direciona cada pessoa pro seu próprio espaço  -->
